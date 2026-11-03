@@ -1,0 +1,12 @@
+{
+  "raw_rows": 1067371,
+  "after_drop_missing_customer": 824364,
+  "after_drop_cancel_nonpositive": 805549,
+  "after_drop_non_product_codes": 802900,
+  "after_drop_exact_duplicates": 776840,
+  "customers": 5853,
+  "items": 4624,
+  "invoices": 36613,
+  "ts_min": "2009-12-01 07:45:00",
+  "ts_max": "2011-12-09 12:50:00"
+}

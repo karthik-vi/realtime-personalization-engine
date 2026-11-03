@@ -1,0 +1,13 @@
+torch==2.7.0+cpu
+pyspark==4.0.0
+scikit-learn==1.6.1
+pandas==2.2.3
+numpy==2.2.5
+openpyxl==3.1.5
+pyarrow==19.0.1
+scipy
+fastapi==0.115.12
+uvicorn==0.34.2
+pydantic==2.11.4
+httpx==0.28.1
+pytest

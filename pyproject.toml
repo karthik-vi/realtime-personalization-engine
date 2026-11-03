@@ -1,0 +1,9 @@
+[project]
+name = "rtp"
+version = "0.1.0"
+description = "Reconstruction: batch (Spark MLlib, PyTorch, sklearn) + streaming (Kafka-like) personalization on public retail data"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
