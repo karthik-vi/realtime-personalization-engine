@@ -96,6 +96,8 @@ def main():
     ap.add_argument("--max-invoices", type=int, default=0)
     ap.add_argument("--tune", action="store_true", help="grid-search blend weight on the last train month (validation)")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--gru-epochs", type=int, default=2)
+    ap.add_argument("--gru-samples", type=int, default=100_000, help="max (prefix, next item) training pairs for the GRU")
     a = ap.parse_args()
 
     if a.synthetic:
@@ -113,7 +115,7 @@ def main():
     als = ALSModel().fit(train, seed=a.seed)
     report["als_train_s"] = round(time.time() - t0, 1)
     t0 = time.time()
-    gru = GRUNext().fit(train, epochs=2 if a.synthetic else 4, seed=a.seed)
+    gru = GRUNext().fit(train, epochs=a.gru_epochs, seed=a.seed, max_pairs=a.gru_samples)
     report["gru_train_s"] = round(time.time() - t0, 1)
     report["gru_loss_by_epoch"] = [round(x, 4) for x in gru.losses]
 
@@ -123,11 +125,11 @@ def main():
         tr2, va = split(train, vs)
         pop2, als2 = Popularity().fit(tr2), ALSModel().fit(tr2, seed=a.seed)
         grid = []
-        for b in (0.0, 0.5, 1.0, 2.0, 4.0):
-            for h in (30.0, 60.0, 180.0):
+        for b in (0.0, 1.0, 4.0):
+            for h in (30.0, 180.0):
                 r = Recommender(pop2, als2, None, beta_repeat=b, half_life_days=h)
                 res, _ = replay(r, tr2, va, ["als+repeat", "repeat"], modes=("live",),
-                                max_invoices=a.max_invoices or 2000)
+                                max_invoices=a.max_invoices or 1500)
                 grid.append({"beta": b, "half_life": h, **res["live/als+repeat"], "repeat_hr": res["live/repeat"]["hr@10"]})
         best = max(grid, key=lambda g: g["ndcg@10"])
         beta, hl = best["beta"], best["half_life"]

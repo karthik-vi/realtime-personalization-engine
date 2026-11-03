@@ -1,0 +1,180 @@
+{
+  "data": "data/processed/events.parquet",
+  "split_ts": "2011-09-01 00:00:00",
+  "n_train_events": 608760,
+  "n_test_events": 168080,
+  "seed": 0,
+  "als_train_s": 56.0,
+  "gru_train_s": 1112.8,
+  "gru_loss_by_epoch": [
+    7.5284,
+    7.211
+  ],
+  "tuning_grid_validation": [
+    {
+      "beta": 0.0,
+      "half_life": 30.0,
+      "hr@10": 0.5358,
+      "recall@10": 0.0978,
+      "ndcg@10": 0.1329,
+      "rev_cov@10": 0.1093,
+      "hr@10_returning": 0.5486,
+      "repeat_hr": 0.6943
+    },
+    {
+      "beta": 0.0,
+      "half_life": 180.0,
+      "hr@10": 0.5358,
+      "recall@10": 0.0978,
+      "ndcg@10": 0.1329,
+      "rev_cov@10": 0.1093,
+      "hr@10_returning": 0.5486,
+      "repeat_hr": 0.7171
+    },
+    {
+      "beta": 1.0,
+      "half_life": 30.0,
+      "hr@10": 0.6927,
+      "recall@10": 0.174,
+      "ndcg@10": 0.2577,
+      "rev_cov@10": 0.2035,
+      "hr@10_returning": 0.7199,
+      "repeat_hr": 0.6943
+    },
+    {
+      "beta": 1.0,
+      "half_life": 180.0,
+      "hr@10": 0.7358,
+      "recall@10": 0.1916,
+      "ndcg@10": 0.2913,
+      "rev_cov@10": 0.2283,
+      "hr@10_returning": 0.7672,
+      "repeat_hr": 0.7171
+    },
+    {
+      "beta": 4.0,
+      "half_life": 30.0,
+      "hr@10": 0.6992,
+      "recall@10": 0.1783,
+      "ndcg@10": 0.2631,
+      "rev_cov@10": 0.2077,
+      "hr@10_returning": 0.727,
+      "repeat_hr": 0.6943
+    },
+    {
+      "beta": 4.0,
+      "half_life": 180.0,
+      "hr@10": 0.7358,
+      "recall@10": 0.1917,
+      "ndcg@10": 0.2927,
+      "rev_cov@10": 0.2272,
+      "hr@10_returning": 0.7672,
+      "repeat_hr": 0.7171
+    }
+  ],
+  "beta_repeat": 4.0,
+  "half_life_days": 180.0,
+  "replay": {
+    "frozen/popularity": {
+      "hr@10": 0.3385,
+      "recall@10": 0.0306,
+      "ndcg@10": 0.068,
+      "rev_cov@10": 0.0396,
+      "hr@10_returning": 0.3433
+    },
+    "frozen/repeat": {
+      "hr@10": 0.6039,
+      "recall@10": 0.1244,
+      "ndcg@10": 0.2027,
+      "rev_cov@10": 0.1472,
+      "hr@10_returning": 0.6597
+    },
+    "frozen/als": {
+      "hr@10": 0.448,
+      "recall@10": 0.0637,
+      "ndcg@10": 0.0995,
+      "rev_cov@10": 0.0721,
+      "hr@10_returning": 0.4738
+    },
+    "frozen/als+repeat": {
+      "hr@10": 0.6145,
+      "recall@10": 0.1276,
+      "ndcg@10": 0.2083,
+      "rev_cov@10": 0.151,
+      "hr@10_returning": 0.6724
+    },
+    "frozen/gru": {
+      "hr@10": 0.3735,
+      "recall@10": 0.0418,
+      "ndcg@10": 0.0777,
+      "rev_cov@10": 0.0493,
+      "hr@10_returning": 0.385
+    },
+    "frozen/gru+repeat": {
+      "hr@10": 0.6197,
+      "recall@10": 0.1288,
+      "ndcg@10": 0.2108,
+      "rev_cov@10": 0.1524,
+      "hr@10_returning": 0.6787
+    },
+    "live/popularity": {
+      "hr@10": 0.3385,
+      "recall@10": 0.0306,
+      "ndcg@10": 0.068,
+      "rev_cov@10": 0.0396,
+      "hr@10_returning": 0.3433
+    },
+    "live/repeat": {
+      "hr@10": 0.6641,
+      "recall@10": 0.1533,
+      "ndcg@10": 0.2427,
+      "rev_cov@10": 0.181,
+      "hr@10_returning": 0.6984
+    },
+    "live/als": {
+      "hr@10": 0.4771,
+      "recall@10": 0.0713,
+      "ndcg@10": 0.1117,
+      "rev_cov@10": 0.0805,
+      "hr@10_returning": 0.4868
+    },
+    "live/als+repeat": {
+      "hr@10": 0.6746,
+      "recall@10": 0.1565,
+      "ndcg@10": 0.249,
+      "rev_cov@10": 0.1854,
+      "hr@10_returning": 0.7107
+    },
+    "live/gru": {
+      "hr@10": 0.3825,
+      "recall@10": 0.0445,
+      "ndcg@10": 0.0824,
+      "rev_cov@10": 0.0517,
+      "hr@10_returning": 0.3892
+    },
+    "live/gru+repeat": {
+      "hr@10": 0.6787,
+      "recall@10": 0.1573,
+      "ndcg@10": 0.2493,
+      "rev_cov@10": 0.1861,
+      "hr@10_returning": 0.7155
+    }
+  },
+  "replay_meta": {
+    "n_invoices": 7061,
+    "n_returning": 5922,
+    "consumer_lag_after": 0,
+    "latency_ms_p50": 3.077,
+    "latency_ms_p95": 6.504
+  },
+  "ltv": {
+    "n_customers": 5225,
+    "target": "revenue in the 90 days after split date",
+    "model_mae": 515.14,
+    "naive_mae": 390.19,
+    "model_spearman": 0.0392,
+    "naive_spearman": 0.4836,
+    "model_top_decile_revenue_capture": 0.1144,
+    "naive_top_decile_revenue_capture": 0.5677
+  }
+}

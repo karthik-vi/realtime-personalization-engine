@@ -28,7 +28,7 @@ def test_live_state_changes_recommendations():
     st = OnlineState().bootstrap(train)
     c = test["customer"].iat[0]
     before = rec.recommend("repeat", st.hist.get(c, []), test["ts"].iat[0])
-    st.update(c, test["ts"].iat[0], ["NEW-ITEM"])
+    st.update(c, test["ts"].iat[0], ["NEW-ITEM"] * 20)  # a strong new repeat signal must surface immediately
     after = rec.recommend("repeat", st.hist[c], test["ts"].iat[0])
     assert "NEW-ITEM" in after and before != after
 

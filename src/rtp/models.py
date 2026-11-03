@@ -97,7 +97,7 @@ class ALSModel:
 class GRUNext:
     """Next-item GRU over the customer's item sequence (PyTorch)."""
 
-    def fit(self, train: pd.DataFrame, max_len: int = 50, dim: int = 64, epochs: int = 4, seed: int = 0, max_items: int = 3000):
+    def fit(self, train: pd.DataFrame, max_len: int = 50, dim: int = 64, epochs: int = 2, seed: int = 0, max_items: int = 3000, max_pairs: int = 100_000):
         import torch
         from torch import nn
 
@@ -113,8 +113,8 @@ class GRUNext:
                 X.append(s[max(0, t - max_len): t])
                 y.append(s[t])
         rng = np.random.default_rng(seed)
-        if len(X) > 300_000:
-            sel = rng.choice(len(X), 300_000, replace=False)
+        if len(X) > max_pairs:
+            sel = rng.choice(len(X), max_pairs, replace=False)
             X, y = [X[i] for i in sel], [y[i] for i in sel]
         V = len(self.inv)
 

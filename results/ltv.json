@@ -1,0 +1,21 @@
+{
+  "n_customers": 5225,
+  "share_zero_target": 0.5721,
+  "naive_last_90d": {
+    "mae": 390.19,
+    "spearman": 0.4836,
+    "top_decile_capture": 0.5677
+  },
+  "hgb_absolute_error": {
+    "mae": 515.14,
+    "spearman": 0.0392,
+    "top_decile_capture": 0.1144,
+    "n_distinct_predictions": 2
+  },
+  "hgb_squared_error": {
+    "mae": 391.42,
+    "spearman": 0.5246,
+    "top_decile_capture": 0.583,
+    "n_distinct_predictions": 2153
+  }
+}
